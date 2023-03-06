@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:sindion/assets/my_theme.dart';
 import 'package:sindion/assets/widgets/custom_btn.dart';
-import 'package:sindion/services/auth/auth.dart';
-import 'package:sindion/views/auth/register/register1.dart';
-import 'package:sindion/views/auth/register/register2.dart';
-
-import '../assets/constants.dart';
-import '../assets/functions.dart';
+import '../utils/constants.dart';
+import '../utils/functions.dart';
+import '../utils/my_theme.dart';
 import 'auth/login/login.dart';
 
 // ignore: must_be_immutable

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:sindion/assets/functions.dart';
-
-import '../../../assets/my_theme.dart';
+import '../../../utils/my_theme.dart';
 
 class ActionText extends StatelessWidget {
   final String question;

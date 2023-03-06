@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:sindion/assets/my_theme.dart';
 import 'package:sindion/views/auth/validators.dart';
+
+import '../../../../utils/my_theme.dart';
 
 class PasswordFormField extends StatelessWidget {
   final TextEditingController cont;

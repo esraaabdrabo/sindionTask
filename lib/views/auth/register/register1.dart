@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:sindion/assets/constants.dart';
-import 'package:sindion/assets/my_theme.dart';
 import 'package:sindion/assets/widgets/custom_appBar.dart';
 import 'package:sindion/assets/widgets/custom_btn.dart';
 import 'package:sindion/views/auth/validators.dart';
 import 'package:sindion/views/auth/widgets/form_field.dart';
-
-import '../../../assets/functions.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/functions.dart';
+import '../../../utils/my_theme.dart';
 import '../../../view_model/auth.dart';
 import 'options/data.dart';
 import 'register2.dart';

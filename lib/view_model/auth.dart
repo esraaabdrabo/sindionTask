@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sindion/assets/functions.dart';
 import 'package:sindion/model/auth/login/request.dart';
 import 'package:sindion/model/auth/login/response.dart';
 import 'package:sindion/model/auth/user.dart';
 import 'package:sindion/services/auth/auth.dart';
+import '../utils/functions.dart';
 import '../views/home/home.dart';
 
 class AuthVM extends ChangeNotifier {

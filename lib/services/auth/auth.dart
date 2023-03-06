@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:sindion/assets/constants.dart';
 import 'package:sindion/model/auth/login/request.dart';
 import 'package:sindion/model/auth/login/response.dart';
 import 'package:sindion/model/auth/user.dart';
+
+import '../../utils/constants.dart';
 
 class AuthSV {
   register({required User newUser}) async {
@@ -14,11 +15,9 @@ class AuthSV {
     if (response.statusCode == 201) {
     } else {
       try {
-        log(response.body);
         Map<String, dynamic> result =
             jsonDecode(response.body) as Map<String, dynamic>;
         return result.values.first[0].toString();
-        //  return RegistrationExceptions.fromJson(jsonDecode(response.body));
       } catch (error) {
         log('$error');
         return '$error';

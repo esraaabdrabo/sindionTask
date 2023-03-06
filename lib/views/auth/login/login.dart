@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:sindion/assets/constants.dart';
-import 'package:sindion/assets/functions.dart';
-import 'package:sindion/assets/my_theme.dart';
 import 'package:sindion/assets/widgets/custom_btn.dart';
 import 'package:sindion/assets/widgets/loading.dart';
 import 'package:sindion/view_model/auth.dart';
@@ -13,6 +10,9 @@ import 'package:sindion/views/auth/validators.dart';
 import 'package:sindion/views/auth/widgets/action_text.dart';
 import 'package:sindion/views/auth/widgets/field_label.dart';
 import 'package:sindion/views/auth/widgets/form_field.dart';
+import '../../../../utils/my_theme.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/functions.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

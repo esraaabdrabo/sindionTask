@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sindion/assets/my_theme.dart';
+import '../../utils/my_theme.dart';
 
 class Loading extends StatelessWidget {
   const Loading({super.key});

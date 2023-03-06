@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/views/auth/widgets/field_label.dart';
 
-import '../../../assets/my_theme.dart';
+import '../../../utils/my_theme.dart';
 
 class CustomFormField extends StatelessWidget {
   final String hint;
