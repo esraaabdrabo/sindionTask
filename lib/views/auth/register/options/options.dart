@@ -34,7 +34,7 @@ class RegisterOptions extends StatelessWidget {
                         )),
               ),
               CustomBTN(
-                  color: secondaryColor,
+                  color: primaryColor,
                   function: () {
                     goto(context: context, screen: const Register1());
                   },

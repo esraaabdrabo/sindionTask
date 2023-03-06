@@ -16,7 +16,7 @@ class FormFieldLabel extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.aBeeZee(
-            color: secondaryColor.withOpacity(.8),
+            color: primaryColor.withOpacity(.8),
             fontWeight: FontWeight.w400,
             letterSpacing: 1,
             fontSize: 17.sp),

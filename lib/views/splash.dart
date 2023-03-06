@@ -28,7 +28,7 @@ class Splash extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 1.h),
               child: Text(
                 'Let\'s Start',
-                style: TextStyle(color: secondaryColor, fontSize: 22.sp),
+                style: TextStyle(color: primaryColor, fontSize: 22.sp),
               ),
             ),
             Padding(
@@ -36,11 +36,11 @@ class Splash extends StatelessWidget {
               child: Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
                 style: TextStyle(
-                    color: secondaryColor.withOpacity(.5), fontSize: 14.sp),
+                    color: primaryColor.withOpacity(.5), fontSize: 14.sp),
               ),
             ),
             CustomBTN(
-                color: secondaryColor,
+                color: primaryColor,
                 function: () {
                   gotoReplacement(context: context, screen: const Login());
                 },

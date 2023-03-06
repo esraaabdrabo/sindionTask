@@ -4,6 +4,9 @@ abstract class Constants {
   static String loginIMG = '$basicImageUrl/login.jpeg';
   static String registerIMG = '$basicImageUrl/register.jpeg';
   static String companyIMG = '$basicImageUrl/company.jpeg';
+  static String walletIMG = '$basicImageUrl/wallet.jpeg';
+  static String buildingIMG = '$basicImageUrl/building.jpeg';
+
   static String userIdKey = 'id';
 
   //API

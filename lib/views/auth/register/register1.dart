@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -62,7 +61,7 @@ class _Register1State extends State<Register1> {
                 Center(
                   child: Text(
                     'Register as ${optionsData[int.parse(authProvider.user.userType)]['description']}',
-                    style: TextStyle(color: secondaryColor, fontSize: 20.sp),
+                    style: TextStyle(color: primaryColor, fontSize: 20.sp),
                   ),
                 ),
                 SizedBox(
@@ -110,7 +109,7 @@ class _Register1State extends State<Register1> {
                     },
                     icon: Icons.phone),
                 CustomBTN(
-                  color: secondaryColor,
+                  color: primaryColor,
                   function: () {
                     if (formKey.currentState!.validate()) {
                       authProvider.setFirstUserData(

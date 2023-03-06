@@ -27,7 +27,7 @@ class _OptionCardState extends State<OptionCard> {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 2.5.h, horizontal: 2.w),
         decoration: BoxDecoration(
-          color: const Color(0xfff8fafb),
+          color: lightGrey,
           borderRadius: BorderRadius.circular(6.w),
         ),
         child: Row(
@@ -49,23 +49,15 @@ class _OptionCardState extends State<OptionCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    optionsData[widget.index]['title']!,
-                    style: GoogleFonts.aBeeZee(
-                        fontWeight: FontWeight.w600,
-                        color: secondaryColor,
-                        fontSize: 18.sp),
-                  ),
-                  Text(
-                    optionsData[widget.index]['subTitle']!,
-                    style: GoogleFonts.aBeeZee(
-                        color: secondaryColor.withOpacity(.8), fontSize: 16.sp),
-                  )
+                  Text(optionsData[widget.index]['title']!,
+                      style: MyThemeData.titleTS),
+                  Text(optionsData[widget.index]['subTitle']!,
+                      style: MyThemeData.subTitleTS)
                 ],
               ),
             ),
             Radio<String>(
-                activeColor: secondaryColor,
+                activeColor: primaryColor,
                 value: '${widget.index}',
                 groupValue: userType,
                 onChanged: (value) {

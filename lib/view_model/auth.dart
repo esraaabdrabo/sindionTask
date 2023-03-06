@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:sindion/assets/functions.dart';
 import 'package:sindion/model/auth/login/request.dart';

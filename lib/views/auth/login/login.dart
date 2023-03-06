@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
                         Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit,eiusmod tempor',
                           style: TextStyle(
-                              color: secondaryColor.withOpacity(.5),
+                              color: primaryColor.withOpacity(.5),
                               fontSize: 16.sp),
                         ),
                         SizedBox(
@@ -74,7 +74,7 @@ class _LoginState extends State<Login> {
                             },
                             question: 'Forget Password?'),
                         CustomBTN(
-                            color: secondaryColor,
+                            color: primaryColor,
                             function: () {
                               if (formKey.currentState!.validate()) {
                                 authProvider.login(

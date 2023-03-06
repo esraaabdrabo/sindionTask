@@ -109,7 +109,7 @@ class _Register2State extends State<Register2> {
                           validator: (String value) {},
                           icon: Icons.location_on_rounded),
                       CustomBTN(
-                        color: secondaryColor,
+                        color: primaryColor,
                         function: () {
                           if (formKey.currentState!.validate() &
                               (authProvider.user.country.isNotEmpty)) {

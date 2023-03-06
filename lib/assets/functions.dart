@@ -13,7 +13,7 @@ gotoReplacement({required BuildContext context, required Widget screen}) {
 
 showSnackBar({required BuildContext context, required String text}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: secondaryColor,
+      backgroundColor: primaryColor,
       content: Text(
         text,
         textAlign: TextAlign.center,

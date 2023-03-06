@@ -20,7 +20,7 @@ class ActionText extends StatelessWidget {
           child: RichText(
             text: TextSpan(
                 style: GoogleFonts.aBeeZee(
-                    color: secondaryColor.withOpacity(.4), fontSize: 16.sp),
+                    color: primaryColor.withOpacity(.4), fontSize: 16.sp),
                 children: [
                   TextSpan(text: question),
                   TextSpan(
