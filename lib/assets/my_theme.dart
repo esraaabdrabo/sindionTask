@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 var primaryColor = const Color.fromARGB(255, 97, 173, 235);
@@ -15,11 +16,9 @@ abstract class MyTheme {
 }
 
 abstract class MyThemeData {
-  static var bRadius50 = const BorderRadius.all(Radius.circular(50));
-  static var bRadius25 = const BorderRadius.all(Radius.circular(25));
-  static var sPadding25h12 =
-      const EdgeInsets.symmetric(horizontal: 25, vertical: 12);
+  static var white18 = GoogleFonts.aBeeZee(
+      textStyle: TextStyle(color: Colors.white, fontSize: 18.sp));
   static var borderRadius = OutlineInputBorder(
       borderRadius: BorderRadius.circular(5.h),
-      borderSide: BorderSide(color: Colors.transparent));
+      borderSide: const BorderSide(color: Colors.transparent));
 }

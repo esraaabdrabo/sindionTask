@@ -1,14 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/assets/my_theme.dart';
+import 'package:sindion/views/auth/validators.dart';
 
 class PasswordFormField extends StatelessWidget {
-  const PasswordFormField({super.key});
+  final TextEditingController cont;
+  const PasswordFormField({required this.cont, super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: cont,
+      keyboardType: TextInputType.number,
+      validator: (value) => AuthValidators.validatePassword(value!),
       decoration: InputDecoration(
           hintText: 'Enter your password',
           suffixIcon: Padding(
@@ -25,7 +29,7 @@ class PasswordFormField extends StatelessWidget {
               borderSide:
                   const BorderSide(color: Color.fromARGB(110, 114, 162, 184))),
           prefixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            padding: EdgeInsets.symmetric(horizontal: 2.w),
             child: const Icon(
               Icons.person,
               color: Color(0xffe5ecfc),

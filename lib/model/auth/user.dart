@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 class User {
+  String id = '';
   late String name;
   late String username;
   late String email;
@@ -21,6 +22,7 @@ class User {
       required this.country});
 
   User.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     name = json['name'];
     username = json['username'];
     email = json['email'];
@@ -40,7 +42,8 @@ class User {
     data['password'] = password;
     data['password_2'] = password;
     data['identification_number'] = identificationNumber;
-    data['user_type'] = userType;
+    data['user_type'] = int.parse(userType) > 1 ? '0' : userType;
+    userType;
     data['country'] = country;
     log("end converting user to json (user model)");
 

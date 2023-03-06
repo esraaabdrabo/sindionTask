@@ -114,11 +114,10 @@ class _Register2State extends State<Register2> {
                           if (formKey.currentState!.validate() &
                               (authProvider.user.country.isNotEmpty)) {
                             authProvider.setSecondUserData(
+                              context: context,
                               userName: userNameCont.text,
                               password: passwordcont.text,
                             );
-                            gotoReplacement(
-                                context: context, screen: const Home());
                           }
                         },
                         text: 'Finish',

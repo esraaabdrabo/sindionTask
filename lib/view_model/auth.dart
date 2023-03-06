@@ -1,11 +1,11 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:sindion/assets/functions.dart';
+import 'package:sindion/model/auth/login/request.dart';
+import 'package:sindion/model/auth/login/response.dart';
 import 'package:sindion/model/auth/user.dart';
 import 'package:sindion/services/auth/auth.dart';
-
-import '../assets/cache_helper.dart';
-import '../assets/constants.dart';
+import '../views/home/home.dart';
 
 class AuthVM extends ChangeNotifier {
   bool isLoading = false;
@@ -23,9 +23,9 @@ class AuthVM extends ChangeNotifier {
       identificationNumber: '',
       userType: '',
       country: '');
+  Tokens? userTokens;
 
   void setUserType(String newUserType) {
-    log(newUserType);
     user.userType = newUserType;
     notifyListeners();
   }
@@ -42,86 +42,50 @@ class AuthVM extends ChangeNotifier {
   }
 
   void setSecondUserData({
+    required BuildContext context,
     required String userName,
     required String password,
   }) {
     user.username = userName;
     user.password = password;
-    registerUser();
+    registerUser(context: context);
   }
 
   void setCountry({required String country}) {
     user.country = country;
   }
 
-  void registerUser() async {
+  void registerUser({required BuildContext context}) async {
     changeIsLoading(true);
-    await AuthSV().register(newUser: user);
+    var response = await AuthSV().register(newUser: user);
+    if (response is String) {
+      showSnackBar(context: context, text: response);
+    } else {
+      changeIsLoading(false);
+
+      showSnackBar(context: context, text: 'Registration Success');
+      Future.delayed(const Duration(seconds: 1)).then(
+          (value) => gotoReplacement(context: context, screen: const Home()));
+    }
     changeIsLoading(false);
   }
 
-//check current user
-  Future<int> checkCurrentUser(BuildContext context) async {
-    //user was singed in
-    var userIdSharedPref = await CacheHelper.getData(key: Constants.userIdKey);
-    if (userIdSharedPref != null) {
-      //   userId = userIdSharedPref;
-      //   currentUser = await CheckPregSV().getUser(userId!);
-
-      ///check if the user device still the same (token has been changed or not)
-      return 1;
-    }
-    //no user found
-    return 0;
-  }
-
-/*
-  Future<void> signUp(
-    BuildContext context,
-    TextEditingController age,
-    TextEditingController weight,
-    TextEditingController week,
-    TextEditingController month,
-  ) async {
+  void login(
+      {required String userName,
+      required String password,
+      required BuildContext context}) async {
     changeIsLoading(true);
-    var response = await AuthSV().signUp(
-        email: email,
-        password: pass,
-        newUser: await makeUser(age, weight, week, month));
-    if (response is UserCredential) {
-      CacheHelper.setData(data: response.user!.uid, key: Constants.userIdKey);
-      CacheHelper.setData(data: await getDeviceToken(), key: Constants.token);
-      currentUser = await CheckPregSV().getUser(response.user!.uid);
-
-      resetUserInfo();
-      goToReplcement(context: context, screen: const Home());
+    var response = await AuthSV()
+        .login(body: LoginRequestBody(username: userName, password: password));
+    if (response is Tokens) {
+      userTokens = response;
       changeIsLoading(false);
+      showSnackBar(context: context, text: 'Login success');
+      Future.delayed(const Duration(seconds: 1)).then(
+          (value) => gotoReplacement(context: context, screen: const Home()));
     } else {
-      //TODO BUG not showing dialog
       changeIsLoading(false);
-      signpExceptionAlert(response, context);
-    }
-    //currentStep = 1;
-  }
-*/
-  /* signpExceptionAlert(response, BuildContext context) {
-    return CustomAlertYesAction(
-      title: handleException(response),
-    );
-  }*/
-
-  handleException(String mess) {
-    switch (mess) {
-      case "The email address is badly formatted.":
-        return "البريد الالكتروني غير صحيح";
-      case "The email address is already in use by another account.":
-        return "البريد الالكتروني مسجل بالفعل";
-      case "The password is invalid or the user does not have a password.":
-        return "كلمة المرور خاطئة";
-      case "There is no user record corresponding to this identifier. The user may have been deleted.":
-        return "هذا الحساب غير مسجل ";
-      default:
-        return "حدث خطأ ما برجاء المحاولة مرة أخرى";
+      showSnackBar(context: context, text: response.toString());
     }
   }
 

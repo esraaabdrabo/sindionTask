@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/assets/my_theme.dart';
 
@@ -25,17 +26,11 @@ class CustomBTN extends StatelessWidget {
         color: color,
         onPressed: function,
         child: icon == null
-            ? Text(
-                text,
-                style: TextStyle(color: Colors.white, fontSize: 18.sp),
-              )
+            ? Text(text, style: MyThemeData.white18)
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    text,
-                    style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                  ),
+                  Text(text, style: MyThemeData.white18),
                   SizedBox(
                     width: 2.5.w,
                   ),
