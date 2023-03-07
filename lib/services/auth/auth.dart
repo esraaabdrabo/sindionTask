@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:http/http.dart' as http;
 import 'package:sindion/model/auth/login/request.dart';
 import 'package:sindion/model/auth/login/response.dart';
-import 'package:sindion/model/auth/user.dart';
-
+import 'package:sindion/model/auth/logout/request.dart';
+import 'package:sindion/model/auth/registration/user.dart';
 import '../../utils/constants.dart';
 
 class AuthSV {
@@ -34,5 +33,11 @@ class AuthSV {
       return Tokens.fromJson(jsonDecode(response.body));
     }
     return 'No active account found with the given credentials';
+  }
+
+  logout({required String refreshToken}) async {
+    var response = await http.post(Uri.parse(Constants.logoutAPIurl),
+        body: LogoutRequestBody(refreshToken: refreshToken).toJson());
+    log(response.body);
   }
 }

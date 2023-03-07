@@ -42,6 +42,7 @@ class User {
     data['password'] = password;
     data['password_2'] = password;
     data['identification_number'] = identificationNumber;
+    //only available user type is 0 or 1
     data['user_type'] = int.parse(userType) > 1 ? '0' : userType;
     userType;
     data['country'] = country;

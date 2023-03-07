@@ -1,4 +1,5 @@
 abstract class Constants {
+  //images
   static String basicImageUrl = 'lib/assets/images';
   static String splashIMG = '$basicImageUrl/logo.jpeg';
   static String loginIMG = '$basicImageUrl/login.jpeg';
@@ -7,7 +8,8 @@ abstract class Constants {
   static String walletIMG = '$basicImageUrl/wallet.jpeg';
   static String buildingIMG = '$basicImageUrl/building.jpeg';
 
-  static String userIdKey = 'id';
+  //shared pref
+  static String tokensKey = 'tokens';
 
   //API
   static String baseAPIurl =

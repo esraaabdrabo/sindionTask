@@ -10,26 +10,8 @@ import '../../../utils/my_theme.dart';
 import '../../../view_model/auth.dart';
 import '../validators.dart';
 
-class Register2 extends StatefulWidget {
+class Register2 extends StatelessWidget {
   const Register2({super.key});
-
-  @override
-  State<Register2> createState() => _Register2State();
-}
-
-class _Register2State extends State<Register2> {
-  TextEditingController userNameCont = TextEditingController();
-  TextEditingController passwordcont = TextEditingController();
-  TextEditingController countryCont = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    userNameCont.dispose();
-    passwordcont.dispose();
-    countryCont.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +25,7 @@ class _Register2State extends State<Register2> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.w),
                 child: Form(
-                  key: formKey,
+                  key: authProvider.formKey2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +33,7 @@ class _Register2State extends State<Register2> {
                       CustomFormField(
                           label: "User name",
                           hint: 'Enter your user name',
-                          controller: userNameCont,
+                          controller: authProvider.userNameCont,
                           validator: (String value) {
                             return AuthValidators.validateName(value);
                           },
@@ -59,7 +41,7 @@ class _Register2State extends State<Register2> {
                       CustomFormField(
                           label: "Password",
                           hint: 'Enter your Password',
-                          controller: passwordcont,
+                          controller: authProvider.passwordcont,
                           validator: (String value) {
                             return AuthValidators.validatePassword(value);
                           },
@@ -109,12 +91,10 @@ class _Register2State extends State<Register2> {
                       CustomBTN(
                         color: primaryColor,
                         function: () {
-                          if (formKey.currentState!.validate() &
+                          if (authProvider.formKey2.currentState!.validate() &
                               (authProvider.user.country.isNotEmpty)) {
-                            authProvider.setSecondUserData(
+                            authProvider.setUserData(
                               context: context,
-                              userName: userNameCont.text,
-                              password: passwordcont.text,
                             );
                           }
                         },

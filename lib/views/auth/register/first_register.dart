@@ -10,30 +10,10 @@ import '../../../utils/functions.dart';
 import '../../../utils/my_theme.dart';
 import '../../../view_model/auth.dart';
 import 'options/data.dart';
-import 'register2.dart';
+import 'second_register.dart';
 
-class Register1 extends StatefulWidget {
+class Register1 extends StatelessWidget {
   const Register1({super.key});
-
-  @override
-  State<Register1> createState() => _Register1State();
-}
-
-class _Register1State extends State<Register1> {
-  TextEditingController nameCont = TextEditingController();
-  TextEditingController nationalIDcont = TextEditingController();
-  TextEditingController emailCont = TextEditingController();
-  TextEditingController phoneCont = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    nationalIDcont.dispose();
-    nameCont.dispose();
-    emailCont.dispose();
-    phoneCont.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +25,7 @@ class _Register1State extends State<Register1> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: Form(
-            key: formKey,
+            key: authProvider.formKey1,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +49,7 @@ class _Register1State extends State<Register1> {
                 CustomFormField(
                     label: "Full name",
                     hint: 'Enter your name',
-                    controller: nameCont,
+                    controller: authProvider.nameCont,
                     validator: (String value) {
                       return AuthValidators.validateName(value);
                     },
@@ -80,7 +60,7 @@ class _Register1State extends State<Register1> {
                 CustomFormField(
                     label: "National ID number",
                     hint: 'Enter your ID number',
-                    controller: nationalIDcont,
+                    controller: authProvider.nationalIDcont,
                     validator: (String value) {
                       return AuthValidators.validateNationalID(value);
                     },
@@ -91,7 +71,7 @@ class _Register1State extends State<Register1> {
                 CustomFormField(
                     label: "Email",
                     hint: 'Enter your email',
-                    controller: emailCont,
+                    controller: authProvider.emailCont,
                     validator: (String value) {
                       return AuthValidators.validateEmail(value);
                     },
@@ -102,7 +82,7 @@ class _Register1State extends State<Register1> {
                 CustomFormField(
                     label: "Phone Number",
                     hint: 'Enter your phone number',
-                    controller: phoneCont,
+                    controller: authProvider.phoneCont,
                     validator: (String value) {
                       return AuthValidators.validatePhone(value);
                     },
@@ -110,12 +90,7 @@ class _Register1State extends State<Register1> {
                 CustomBTN(
                   color: primaryColor,
                   function: () {
-                    if (formKey.currentState!.validate()) {
-                      authProvider.setFirstUserData(
-                          email: emailCont.text,
-                          name: nameCont.text,
-                          nationalID: nationalIDcont.text,
-                          phone: phoneCont.text);
+                    if (authProvider.formKey1.currentState!.validate()) {
                       goto(context: context, screen: const Register2());
                     }
                   },

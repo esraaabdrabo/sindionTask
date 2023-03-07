@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/assets/widgets/custom_btn.dart';
+import 'package:sindion/view_model/auth.dart';
+import 'package:sindion/views/home/home.dart';
 import '../utils/constants.dart';
 import '../utils/functions.dart';
 import '../utils/my_theme.dart';
@@ -12,6 +15,7 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthVM authProvider = Provider.of(context);
     return Scaffold(
       backgroundColor: const Color(0xfff5f7fd),
       body: Padding(
@@ -37,8 +41,12 @@ class Splash extends StatelessWidget {
             ),
             CustomBTN(
                 color: primaryColor,
-                function: () {
-                  gotoReplacement(context: context, screen: const Login());
+                function: () async {
+                  gotoReplacement(
+                      context: context,
+                      screen: await authProvider.checkIfUserSignedIn()
+                          ? const Home()
+                          : const Login());
                 },
                 text: "Get Started")
           ],

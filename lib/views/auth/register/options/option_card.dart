@@ -6,7 +6,6 @@ import 'package:sindion/views/auth/register/options/data.dart';
 
 import '../../../../utils/my_theme.dart';
 
-
 class OptionCard extends StatefulWidget {
   final int index;
   const OptionCard({required this.index, super.key});

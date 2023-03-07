@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sindion/utils/my_theme.dart';
 
 createCustomAppBar() {
-  var secondaryColor;
   return AppBar(
     elevation: 0,
-    iconTheme: IconThemeData(color: secondaryColor),
+    iconTheme: IconThemeData(color: primaryColor),
     backgroundColor: Colors.transparent,
   );
 }

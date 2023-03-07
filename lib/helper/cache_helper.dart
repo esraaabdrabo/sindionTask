@@ -10,7 +10,7 @@ abstract class CacheHelper {
     return sharedPref.get(key);
   }
 
-  static setData({required String key, required data}) async {
+  static void setData({required String key, required data}) async {
     var sharedPref = await initSharedPref();
 
     if (data is String) {
@@ -20,8 +20,8 @@ abstract class CacheHelper {
     }
   }
 
-  static removeData({required String key}) async {
+  static Future<bool> removeData({required String key}) async {
     var sharedPref = await initSharedPref();
-    sharedPref.remove(key);
+    return await sharedPref.remove(key);
   }
 }

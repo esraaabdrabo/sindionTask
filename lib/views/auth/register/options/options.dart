@@ -7,7 +7,7 @@ import 'package:sindion/views/auth/register/options/option_card.dart';
 import '../../../../assets/widgets/custom_btn.dart';
 import '../../../../utils/functions.dart';
 import '../../../../utils/my_theme.dart';
-import '../register1.dart';
+import '../first_register.dart';
 
 class RegisterOptions extends StatelessWidget {
   const RegisterOptions({super.key});

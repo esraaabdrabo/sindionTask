@@ -35,12 +35,12 @@ abstract class AuthValidators {
 
   static validatePassword(String value) {
     if (checkIsEmpty(value)) {
-      return 'weak Password';
+      return 'invalid Password';
     }
     if (value.length > 6) {
       return null;
     } else {
-      return 'Weak Password';
+      return 'invalid Password';
     }
   }
 

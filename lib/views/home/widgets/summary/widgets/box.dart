@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class EvaluationSummary extends StatelessWidget {
+class SummaryBox extends StatelessWidget {
   final String number;
   final String title;
   final Color color;
-  const EvaluationSummary(
+  const SummaryBox(
       {required this.color,
       required this.number,
       required this.title,
       super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(

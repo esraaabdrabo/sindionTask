@@ -1,26 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/views/auth/validators.dart';
-
 import '../../../../utils/my_theme.dart';
 
-class PasswordFormField extends StatelessWidget {
+class PasswordFormField extends StatefulWidget {
   final TextEditingController cont;
   const PasswordFormField({required this.cont, super.key});
 
   @override
+  State<PasswordFormField> createState() => _PasswordFormFieldState();
+}
+
+class _PasswordFormFieldState extends State<PasswordFormField> {
+  bool hidePass = true;
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: cont,
+      obscureText: hidePass,
+      controller: widget.cont,
       keyboardType: TextInputType.number,
       validator: (value) => AuthValidators.validatePassword(value!),
       decoration: InputDecoration(
           hintText: 'Enter your password',
-          suffixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w),
-            child: const Icon(
-              Icons.remove_red_eye,
-              color: Color(0xffe5ecfc),
+          suffixIcon: InkWell(
+            onTap: () {
+              hidePass = !hidePass;
+              setState(() {});
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              child: Icon(
+                hidePass ? Icons.remove_red_eye : Icons.lock,
+                color: const Color(0xffe5ecfc),
+              ),
             ),
           ),
           hintStyle: const TextStyle(color: Color(0xff72a2b8)),

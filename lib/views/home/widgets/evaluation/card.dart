@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'title_status.dart';
-
 import '../../../../utils/my_theme.dart';
 import 'image.dart';
 import 'location.dart';
@@ -13,8 +11,16 @@ class EvaluationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 1.w),
-      color: primaryColor.withOpacity(.035),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.w),
+          color: lightGrey,
+          boxShadow: [
+            BoxShadow(
+                color: primaryColor.withOpacity(.1),
+                blurRadius: 5,
+                spreadRadius: 1)
+          ]),
+      padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
       child: Row(children: [
         const EvaluationImage(),
         SizedBox(

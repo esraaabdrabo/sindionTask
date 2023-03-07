@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:sindion/utils/functions.dart';
 import '../../../assets/widgets/custom_btn.dart';
+import '../../../utils/constants.dart';
 import '../../../utils/my_theme.dart';
 
 class AddRequest extends StatelessWidget {
@@ -46,16 +48,19 @@ class AddRequest extends StatelessWidget {
               width: 65.w,
               child: CustomBTN(
                   color: secodaryColor,
-                  function: () {},
+                  function: () {
+                    showSnackBar(
+                        context: context, text: 'Request now button pressed');
+                  },
                   text: 'Request Now!'.toUpperCase()),
             ),
           ),
-          //wallet image not png
-          /*  Align(
-                  alignment: Alignment.topRight,
-                  child: SizedBox(
-                      height: 12.h, child: Image.asset(Constants.walletIMG)),
-                )*/
+          //TODO wallet image not png
+          Align(
+            alignment: Alignment.topRight,
+            child:
+                SizedBox(height: 12.h, child: Image.asset(Constants.walletIMG)),
+          )
         ],
       ),
     );
