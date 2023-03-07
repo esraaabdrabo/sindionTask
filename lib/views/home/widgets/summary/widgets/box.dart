@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:sindion/views/animation/obacity.dart';
 
 class SummaryBox extends StatelessWidget {
   final String number;
@@ -24,12 +25,23 @@ class SummaryBox extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            number,
-            style: GoogleFonts.aBeeZee(
-                fontSize: 22.sp, fontWeight: FontWeight.bold, color: color),
+          AnimateObacity(
+            duration: const Duration(seconds: 2),
+            isForward: true,
+            curve: Curves.fastLinearToSlowEaseIn,
+            widget: Text(
+              number,
+              style: GoogleFonts.aBeeZee(
+                  fontSize: 22.sp, fontWeight: FontWeight.bold, color: color),
+            ),
           ),
-          Text(title, style: GoogleFonts.cairo(fontSize: 20.sp, color: color)),
+          AnimateObacity(
+            duration: const Duration(seconds: 3),
+            isForward: true,
+            curve: Curves.fastLinearToSlowEaseIn,
+            widget: Text(title,
+                style: GoogleFonts.cairo(fontSize: 20.sp, color: color)),
+          )
         ],
       ),
     );

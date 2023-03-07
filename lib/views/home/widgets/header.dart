@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:sindion/views/animation/offset.dart';
 import '../../../utils/constants.dart';
 
 class Header extends StatelessWidget {
@@ -30,13 +31,20 @@ class Header extends StatelessWidget {
                 bottomRight: Radius.circular(15.w))),
         child: Padding(
           padding: EdgeInsets.only(top: 8.h),
-          child: Text(
-            "QAYM AQARAK",
-            style: GoogleFonts.cairo(
-                letterSpacing: 2,
-                fontWeight: FontWeight.w900,
-                fontSize: 25.sp,
-                color: Colors.white),
+          child: AnimateOffset(
+            begin: const Offset(0, -1),
+            end: Offset.zero,
+            duration: const Duration(seconds: 4),
+            isForward: true,
+            curve: Curves.fastLinearToSlowEaseIn,
+            widget: Text(
+              "QAYM AQARAK",
+              style: GoogleFonts.cairo(
+                  letterSpacing: 2,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25.sp,
+                  color: Colors.white),
+            ),
           ),
         ),
       ),

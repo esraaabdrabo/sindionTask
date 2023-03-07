@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:sindion/assets/widgets/animated_image.dart';
 import 'package:sindion/assets/widgets/custom_btn.dart';
 import 'package:sindion/assets/widgets/loading.dart';
 import 'package:sindion/view_model/auth.dart';
@@ -37,7 +38,7 @@ class _LoginState extends State<Login> {
     AuthVM authProvider = Provider.of(context);
     return Scaffold(
       body: authProvider.isLoading
-          ? Loading()
+          ? const Loading()
           : Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -48,7 +49,7 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(Constants.loginIMG),
+                        AnimatedImage(path: Constants.loginIMG),
                         Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit,eiusmod tempor',
                           style: TextStyle(
@@ -61,6 +62,7 @@ class _LoginState extends State<Login> {
                         CustomFormField(
                             label: "User name",
                             hint: 'Enter your user name',
+                            keyboardType: TextInputType.name,
                             controller: userNameCont,
                             validator: (String value) {
                               return AuthValidators.validateName(value);

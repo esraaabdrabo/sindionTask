@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AnimateOffset extends StatefulWidget {
-  Duration duration;
-  Offset begin;
-  Offset end;
-
-  bool isForward;
-  bool isReverse;
-  bool isRepeat;
-
-  Widget widget;
-  AnimateOffset(
+  final Duration duration;
+  final Offset begin;
+  final Offset end;
+  final bool isForward;
+  final bool isReverse;
+  final bool isRepeat;
+  final Widget widget;
+  final dynamic curve;
+  const AnimateOffset(
       {required this.begin,
       required this.end,
       required this.widget,
       required this.duration,
+      this.curve = Curves.ease,
       this.isForward = false,
       this.isRepeat = false,
       this.isReverse = false,
@@ -44,7 +44,7 @@ class _AnimateOffsetState extends State<AnimateOffset>
 
     _controller = AnimationController(duration: widget.duration, vsync: this);
     _animationOffest = Tween<Offset>(begin: widget.begin, end: widget.end)
-        .animate(_controller);
+        .animate(CurvedAnimation(parent: _controller, curve: widget.curve));
     getTikerFuture();
   }
 

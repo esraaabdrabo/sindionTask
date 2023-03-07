@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class AnimatedHeight extends StatefulWidget {
-  Color scaffoldBG;
-  double begin;
-  double end;
-  Duration duration;
-  bool isForward;
-  bool isReverse;
-  bool isRepeat;
-
-  Widget widget;
-  AnimatedHeight(
+class AnimateSize extends StatefulWidget {
+  final Color scaffoldBG;
+  final double begin;
+  final double end;
+  final Duration duration;
+  final bool isForward;
+  final bool isReverse;
+  final bool isRepeat;
+  final Widget widget;
+  final dynamic curve;
+  const AnimateSize(
       {required this.begin,
       required this.end,
       required this.widget,
       required this.duration,
+      this.curve = Curves.ease,
       this.isForward = false,
       this.isRepeat = false,
       this.isReverse = false,
@@ -23,10 +24,10 @@ class AnimatedHeight extends StatefulWidget {
       super.key});
 
   @override
-  _AnimatedHeightState createState() => _AnimatedHeightState();
+  _AnimateSizeState createState() => _AnimateSizeState();
 }
 
-class _AnimatedHeightState extends State<AnimatedHeight>
+class _AnimateSizeState extends State<AnimateSize>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation _animation;
@@ -45,27 +46,24 @@ class _AnimatedHeightState extends State<AnimatedHeight>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _animation =
-        Tween(begin: widget.begin, end: widget.end).animate(_controller);
+    _animation = Tween(begin: widget.begin, end: widget.end)
+        .animate(CurvedAnimation(parent: _controller, curve: widget.curve));
     getTikerFuture();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: widget.scaffoldBG,
-      body: AnimatedBuilder(
-        animation: _animation,
-        builder: (context, child) {
-          return Center(
-            child: SizedBox(
-              width: _animation.value,
-              height: _animation.value,
-              child: widget.widget,
-            ),
-          );
-        },
-      ),
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Center(
+          child: SizedBox(
+            width: _animation.value,
+            height: _animation.value,
+            child: widget.widget,
+          ),
+        );
+      },
     );
   }
 

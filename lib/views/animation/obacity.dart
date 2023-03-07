@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AnimateObacity extends StatefulWidget {
-  double begin;
-  double end;
-  Duration duration;
-  bool isForward;
-  bool isReverse;
-  bool isRepeat;
-  Color scaffoldBG;
-
-  Widget widget;
-  AnimateObacity(
+  final double begin;
+  final double end;
+  final Duration duration;
+  final bool isForward;
+  final bool isReverse;
+  final dynamic curve;
+  final bool isRepeat;
+  final Color scaffoldBG;
+  final Widget widget;
+  const AnimateObacity(
       {required this.widget,
       required this.duration,
       this.scaffoldBG = Colors.transparent,
       this.isForward = false,
       this.begin = -1,
+      this.curve = Curves.ease,
       this.end = 1,
       this.isRepeat = false,
       this.isReverse = false,
@@ -60,9 +61,6 @@ class _AnimateObacityState extends State<AnimateObacity>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: widget.scaffoldBG,
-      body: FadeTransition(opacity: _animationDouble, child: widget.widget),
-    );
+    return FadeTransition(opacity: _animationDouble, child: widget.widget);
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/utils/functions.dart';
+import 'package:sindion/views/home/widgets/add_request/description.dart';
+import 'package:sindion/views/home/widgets/add_request/wallet.dart';
 import '../../../assets/widgets/custom_btn.dart';
-import '../../../utils/constants.dart';
 import '../../../utils/my_theme.dart';
+
 
 class AddRequest extends StatelessWidget {
   const AddRequest({super.key});
@@ -12,36 +14,11 @@ class AddRequest extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 90.w,
-      height: 25.h,
+      height: 27.h,
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(2.w),
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 10.w),
-              color: primaryColor.withOpacity(.05),
-              height: 17.h,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Add Request',
-                    style: MyThemeData.titleTS,
-                  ),
-                  SizedBox(
-                    height: 1.25.h,
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet,sunt in culpa qui officia Lorem .',
-                    maxLines: 2,
-                    overflow: TextOverflow.clip,
-                    style: MyThemeData.subTitleTS,
-                  )
-                ],
-              ),
-            ),
-          ),
+          const AddRequestDescription(),
           Padding(
             padding: EdgeInsets.only(top: 15.h),
             child: SizedBox(
@@ -55,12 +32,7 @@ class AddRequest extends StatelessWidget {
                   text: 'Request Now!'.toUpperCase()),
             ),
           ),
-          //TODO wallet image not png
-          Align(
-            alignment: Alignment.topRight,
-            child:
-                SizedBox(height: 12.h, child: Image.asset(Constants.walletIMG)),
-          )
+          const AddRequestWallet()
         ],
       ),
     );

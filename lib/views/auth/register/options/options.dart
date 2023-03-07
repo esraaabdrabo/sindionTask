@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/assets/widgets/custom_appBar.dart';
+import 'package:sindion/view_model/auth.dart';
 import 'package:sindion/views/auth/register/options/data.dart';
 import 'package:sindion/views/auth/register/options/option_card.dart';
 import '../../../../assets/widgets/custom_btn.dart';
@@ -14,6 +16,7 @@ class RegisterOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthVM authProvider = Provider.of(context);
     return Scaffold(
       appBar: createCustomAppBar(),
       backgroundColor: Colors.white,
@@ -34,7 +37,12 @@ class RegisterOptions extends StatelessWidget {
               CustomBTN(
                   color: primaryColor,
                   function: () {
-                    goto(context: context, screen: const Register1());
+                    authProvider.user.userType != ''
+                        ? goto(context: context, screen: const Register1())
+                        : showSnackBar(
+                            context: context,
+                            backGroundColor: Colors.red,
+                            text: 'Please choose any option.');
                   },
                   text: "Register now")
             ],

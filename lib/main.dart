@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/utils/my_theme.dart';
 import 'package:sindion/view_model/auth.dart';
-import 'package:sindion/views/splash.dart';
+import 'package:sindion/views/splash/splash.dart';
 
 void main() {
   runApp(const MyApp());

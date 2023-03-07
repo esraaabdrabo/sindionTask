@@ -13,9 +13,12 @@ gotoReplacement({required BuildContext context, required Widget screen}) {
       context, MaterialPageRoute(builder: (context) => screen));
 }
 
-showSnackBar({required BuildContext context, required String text}) {
+showSnackBar(
+    {required BuildContext context,
+    required String text,
+    Color? backGroundColor}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: primaryColor,
+      backgroundColor: backGroundColor ?? primaryColor,
       content: Text(
         text,
         textAlign: TextAlign.center,

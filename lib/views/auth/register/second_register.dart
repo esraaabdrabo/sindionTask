@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sindion/assets/widgets/custom_btn.dart';
 import 'package:sindion/assets/widgets/loading.dart';
+import 'package:sindion/utils/functions.dart';
 import 'package:sindion/views/auth/widgets/drop_down_menu.dart';
 import 'package:sindion/views/auth/widgets/form_field.dart';
 import '../../../assets/widgets/custom_appBar.dart';
@@ -33,6 +34,7 @@ class Register2 extends StatelessWidget {
                       CustomFormField(
                           label: "User name",
                           hint: 'Enter your user name',
+                          keyboardType: TextInputType.name,
                           controller: authProvider.userNameCont,
                           validator: (String value) {
                             return AuthValidators.validateName(value);
@@ -41,6 +43,7 @@ class Register2 extends StatelessWidget {
                       CustomFormField(
                           label: "Password",
                           hint: 'Enter your Password',
+                          keyboardType: TextInputType.visiblePassword,
                           controller: authProvider.passwordcont,
                           validator: (String value) {
                             return AuthValidators.validatePassword(value);
@@ -50,13 +53,13 @@ class Register2 extends StatelessWidget {
                           function: (value) =>
                               authProvider.setCountry(country: value),
                           label: "Country",
-                          options: const ['Egypt', ''],
+                          options: const ['Egypt'],
                           hint: "Select your country",
                           icon: Icons.map),
                       CustomDropDown(
                           function: (value) {},
                           label: "Neighborood",
-                          options: const ["Ss", "ss"],
+                          options: const [" 1", " 2"],
                           hint: "Select your Neighborood",
                           icon: Icons.telegram_sharp),
                       Row(
@@ -67,7 +70,7 @@ class Register2 extends StatelessWidget {
                                 function: (value) {},
                                 options: const ["Alex", "Cairo"],
                                 hint: "City",
-                                icon: Icons.telegram_sharp),
+                                icon: Icons.my_location_sharp),
                           ),
                           SizedBox(
                             width: 5.w,
@@ -76,15 +79,16 @@ class Register2 extends StatelessWidget {
                             child: CustomDropDown(
                                 label: "Region",
                                 function: (value) {},
-                                options: const ["Ss", "ss"],
+                                options: const [" 1", " 2"],
                                 hint: "Region",
-                                icon: Icons.telegram_sharp),
+                                icon: Icons.location_searching_outlined),
                           ),
                         ],
                       ),
                       CustomFormField(
                           label: "Detailed Address",
                           hint: 'Enter your detailed address',
+                          keyboardType: TextInputType.streetAddress,
                           controller: TextEditingController(),
                           validator: (String value) {},
                           icon: Icons.location_on_rounded),
@@ -96,6 +100,13 @@ class Register2 extends StatelessWidget {
                             authProvider.setUserData(
                               context: context,
                             );
+                          } else {
+                            if (authProvider.user.country.isEmpty) {
+                              showSnackBar(
+                                  context: context,
+                                  backGroundColor: Colors.red,
+                                  text: "Please choose a country");
+                            }
                           }
                         },
                         text: 'Finish',

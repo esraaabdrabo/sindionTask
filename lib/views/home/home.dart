@@ -28,31 +28,30 @@ class Home extends StatelessWidget {
         },
         child: const Icon(Icons.add_to_photos_rounded),
       ),
-      body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Header(),
-              SizedBox(
-                height: 5.h,
-              ),
-              const AddRequest(),
-              const EvaluationSummary(),
-              Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 3.w),
-                  child: ListView.separated(
-                      separatorBuilder: (context, index) => Divider(
-                            height: 1.h,
-                            color: Colors.transparent,
-                          ),
-                      padding: EdgeInsets.only(top: 5.h),
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 10,
-                      itemBuilder: (context, index) => const EvaluationCard()))
-            ],
-          )),
+      body: ListView(
+        padding: EdgeInsets.zero,
+        physics: const BouncingScrollPhysics(),
+        children: [
+          const Header(),
+          SizedBox(
+            height: 5.h,
+          ),
+          const AddRequest(),
+          const EvaluationSummary(),
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 3.w),
+              child: ListView.separated(
+                  separatorBuilder: (context, index) => Divider(
+                        height: 1.h,
+                        color: Colors.transparent,
+                      ),
+                  padding: EdgeInsets.only(top: 5.h),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  itemBuilder: (context, index) => EvaluationCard()))
+        ],
+      ),
     );
   }
 }
